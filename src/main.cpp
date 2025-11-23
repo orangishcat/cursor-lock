@@ -152,7 +152,7 @@ private:
 } // namespace
 
 class $modify(MyMenuLayer, MenuLayer) {
-	bool init() {
+	bool init() override {
 		if (!MenuLayer::init()) {
 			return false;
 		}
@@ -164,7 +164,7 @@ class $modify(MyMenuLayer, MenuLayer) {
 };
 
 class $modify(MyPlayLayer, PlayLayer) {
-	bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) {
+	bool init(GJGameLevel* level, bool useReplay, bool dontCreateObjects) override {
 		if (!PlayLayer::init(level, useReplay, dontCreateObjects)) {
 			return false;
 		}
@@ -184,7 +184,7 @@ class $modify(MyPlayLayer, PlayLayer) {
 };
 
 class $modify(MyPauseLayer, PauseLayer) {
-	void onResume(CCObject* sender) {
+	void onResume(CCObject* sender) override {
 		if (auto manager = CursorLockManager::get()) {
 			manager->activate();
 		}
